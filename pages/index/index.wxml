@@ -1,0 +1,81 @@
+<form bindsubmit="formSubmit" bindreset="formReset">
+  <view class="section flex">
+    <view class="section__title">货架价格</view>
+    <input value="{{shop}}" bindinput="bindShopInput" name="input" type="digit" placeholder="货架价格/家" />
+  </view>
+
+  <view class="section flex">
+    <view class="section__title">零食价格</view>
+    <input value="{{pro}}" bindinput="bindProInput" name="input" type="digit" placeholder="零食价格/家" />
+  </view>
+
+  <view class="section flex">
+    <view class="section__title">零食毛利(%)</view>
+    <input value="{{percent}}" bindinput="bindPercentInput" name="input" type="digit" placeholder="零食毛利(%)" />
+  </view>
+
+  <view class="section flex">
+    <view class="section__title">开户数量</view>
+    <input value="{{bus}}" bindinput="bindBusInput" name="input" type="number" placeholder="开户数量" />
+  </view>
+
+  <view class="section flex">
+    <view class="section__title">每日开户数量</view>
+    <input value="{{daybus}}" bindinput="bindDayBusInput" name="input" type="number" placeholder="每日开户数量" />
+  </view>
+
+  <view class="section flex">
+    <view class="section__title">零食更换周期</view>
+    <input value="{{circle}}" bindinput="bindCircleInput" name="input" type="number" placeholder="零食更换周期（天）" />
+  </view>
+
+  <view class="section flex">
+    <view class="section__title">运营时间</view>
+    <input value="{{date}}" bindinput="bindDateInput" name="input" type="number" placeholder="运营时间（天）" />
+  </view>
+  
+  <view class="btn-area">
+    <button formType="submit">计算</button>
+    <button formType="reset">重置</button>
+  </view>
+</form>
+
+<view class="result-bg" wx:if="{{showModal}}"></view>
+<view class="result-body" wx:if="{{showModal}}">
+  <scroll-view scroll-y="true" style="height: {{height}}px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view wx:if="{{data && data.list && data.list.length > 0}}">
+      <view style="height:3rem;width:100%;display:flex;align-items:center;justify-content:center;background-color:#e0e0e0;position:fixed;top:0;" bindtap="closeModal">点这里返回</view>
+      <view class="table">
+        <view class="tr bg-w">
+          <view class="th">天数</view>
+          <!--<view class="th">今日营业额</view>
+          <view class="th ">今日零食成本</view>-->
+          <view class="th ">今日利润</view>
+          <view class="th ">总营业额</view>
+          <view class="th ">总成本</view>
+          <view class="th ">总利润</view>
+        </view>
+        <block wx:for="{{data.list}}" wx:key="{{firstTime}}">
+          <view class="tr bg-g {{index==0?'marginTop':''}}" wx:if="{{index % 2 == 0}}">
+            <view class="td">{{item.firstTime}}</view>
+            <!--<view class="td">{{item.dayAmount}}</view>
+            <view class="td">{{item.dayPrice}}</view>-->
+            <view class="td">{{item.dayEarn}}</view>
+            <view class="td">{{item.manageAmount}}</view>
+            <view class="td">{{item.managePrice}}</view>
+            <view class="td">{{item.manageEarn}}</view>
+          </view>
+          <view class="tr" wx:else>
+            <view class="td">{{item.firstTime}}</view>
+            <!--<view class="td">{{item.dayAmount}}</view>
+            <view class="td">{{item.dayPrice}}</view>-->
+            <view class="td">{{item.dayEarn}}</view>
+            <view class="td">{{item.manageAmount}}</view>
+            <view class="td">{{item.managePrice}}</view>
+            <view class="td">{{item.manageEarn}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </scroll-view>
+</view>
