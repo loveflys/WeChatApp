@@ -63,7 +63,7 @@ Page({
     let sendTime = parseInt(Number(this.data.date)/Number(this.data.circle));     
     let Amount = 0;
     let data = [];
-    let shopNum = 1;
+    let shopNum = Number(this.data.daybus);
     let manageAmount = 0; //总营业额
     let managePrice = 0; //总成本
     let manageEarn = 0; //总利润
