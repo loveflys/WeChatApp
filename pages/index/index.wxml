@@ -16,12 +16,12 @@
 
   <view class="section flex">
     <view class="section__title">开户数量</view>
-    <input value="{{bus}}" bindinput="bindBusInput" name="input" type="digit" placeholder="开户数量" />
+    <input value="{{bus}}" bindinput="bindBusInput" name="input" type="number" placeholder="开户数量" />
   </view>
 
   <view class="section flex">
     <view class="section__title">每日开户数量</view>
-    <input value="{{daybus}}" bindinput="bindDayBusInput" name="input" type="number" placeholder="每日开户数量" />
+    <input value="{{daybus}}" bindinput="bindDayBusInput" name="input" type="digit" placeholder="每日开户数量" />
   </view>
 
   <view class="section flex">
